@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>ECML-PKDD-13 sorce codes, by Xin Jin</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- modernizr enables HTML5 elements and feature detects -->
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <header>
+      <div id="logo"><h1>Codes</h1></div>
+      <nav>
+        <ul class="lavaLampWithImage" id="lava_menu">
+          <li class="current"><a href="index.html">Home</a></li>
+          <li><a href="index.html">Publications</a></li>
+
+        </ul>
+      </nav>
+    </header>
+    <div id="site_content">
+
+      <div id="sidebar_container">
+        
+        <div class="sidebar">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Publications</a></li>
+
+          </ul>
+        </div>
+      </div>
+      
+       <!-- begin of main content, except header and the top picture %%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div id="content">
+        <ul>
+            <li><font face="Times New Roman"><b>Xin Jin</b>, Fuzhen Zhuang, Shuhui Wang, Qing He and Zhongzhi Shi. <strong>Shared Structure Learning for Multiple Tasks with Multiple Views</strong>. 
+            	<em>European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases <a href="http://www.ecmlpkdd2013.org/">(ECML-PKDD 2013)</a></em>, Prague, Czech Republic, Sep 23 - 27, 2013, to appear. 
+            	  
+            	    </font>
+            </li>
+            <br>  <br>
+        </ul>
+        
+        <h2>Matlab Codes for the Algorithm</h2>
+        <p>The matlab program  <a href="ECML_13_experiments/CASO_MVMT.m"><font color=blue>CASO_MVMT.m</font></a>  can be used to run the algorithm  proposed in the above paper.
+        	The version of the Matlab used to write the program is Version 7.10.0.499 (R2010a). The input parameters for the program is described as follows: <br></p>
+        	
+        	<table style="width:100%; border-spacing:0;">
+          <tr><th>Parameter</th><th>Description</th></tr>
+          <tr><td>fea</td><td>a taskNum-by-viewNum cell array of matrices, each matirx  represents the feature matrix for a views in a task. If a view does not exist for a task, then it is an empty matrix. It contains the testing samples' features.</td></tr>
+          
+          <tr><td>label </td><td>a taskNum dimension cell array of matrices, each matrix contains the true class labels for a task,it is a column vector (n-by-1 matrix), labels are -1 or 1. It contains testing samples' label.</td></tr>
+          
+          <tr><td>trainFea </td><td> a taskNum-by-viewNum cell array of matrices, each matirx  represents the feature matrix for a views in a task. If a view does not exist for a task, then it is an empty matrix. It contains the labeled training samples' features.</td></tr>
+          
+          <tr><td>trainLabel </td><td> a taskNum dimension cell array of matrices, each matrix  contains the true class labels for a task,it is a column vector (n-by-1  matrix), labels are -1 or 1. It contains labeled training samples' ture class label.</td></tr>
+          
+          <tr><td>unlabelFea </td><td> a taskNum-by-viewNum cell array of matrices, each matirx represents the feature matrix for a view in a task. If a  view does not exist for a task, then it is an empty matrix. It  contains the unlabeled  samples' features.</td></tr>
+          
+          <tr><td>unlabelLabel </td><td> a taskNum dimension cell array of matrices, each matrix    contains the true class labels for a task,it is a column vector (n-by-1 matrix), labels are -1 or 1. It contains unlabeled  samples'  label. This information is not used in the current version.</td></tr>
+          
+          <tr><td>ite </td><td> the maximum iteration number</td></tr>
+          
+          <tr><td>h </td><td> the dimension of the shared low dimensional feature space</td></tr>
+          
+          <tr><td>alpha,beta,gamma </td><td> parameters used in Eq.(13),(15) in the paper</td></tr>
+    
+        </table>
+        
+        <p>The return values of the program is described as follows: <br></p>
+        <table style="width:100%; border-spacing:0;">
+        	<tr><th>Parameter</th><th>Description</th></tr>
+          <tr><td>result </td><td> a taskNum dimension cell array of matrices, each  matrix contains the predicted class labels for the testing samples in a task</td></tr>
+          
+          <tr><td>F1 </td><td>a taskNum dimension vector, each element is the F1 measure for a task</td></tr>
+          
+          <tr><td>meanF1 </td><td>mean F1 for all the tasks, i.e.,meanF1=mean(F1)</td></tr>
+          
+          <tr><td>U </td><td>a taskNum-by-viewNum cell array of matrices, each matrix is a column vector contains the weitht vector u_t^v for the view in a task</td></tr>
+          
+          <tr><td>Z </td><td>a taskNum-by-viewNum cell array of matrices, each matrix is a column  vector contains the weitht vector z_t^v for the view in a task</td></tr>
+          
+          <tr><td>Theta </td><td>a viewNum cell array of matrices, each matrix is Theta^v for a specific view v</td></tr>
+                    
+        </table>
+        
+        <h2>Data Sets Used</h2>	
+        <p>It must be noted that the data sets must be preprocessed, so that they satisfy the format requirements of the program as described in the above. A sample input of the 20newsgroups data is provided (<a href="ECML_13_experiments/20news.mat"><font color=blue>20news.mat </font></a>).  It is a MATLAB formatted binary file (MAT-file), contains data for a problem that contains 20 tasks and 21 views. The number of labeled training samples is 20 for each task, the unlabeled training samples is 80.</p>
+        <p>The four data sets used in our paper are publicly available, they can be found at:
+        	</p>
+        	<ul>    		         
+          <li>NUS-WIDE Object web image database: <a target="_blank" href="http://lms.comp.nus.edu.sg/research/NUS-WIDE.htm">http://lms.comp.nus.edu.sg/research/NUS-WIDE.htm</a> </li>
+          <li>Leaves: <a target="_blank" href="http://archive.ics.uci.edu/ml/datasets/One-hundred+plant+species+leaves+data+set">http://archive.ics.uci.edu/ml/datasets/One-hundred+plant+species+leaves+data+set</a> </li>
+          <li>20Newsgroups: <a target="_blank" href="http://people.csail.mit.edu/jrennie/20Newsgroups/">http://people.csail.mit.edu/jrennie/20Newsgroups/</a> </li>
+          <li>NIST Topic Detection and Tracking (TDT2): <a target="_blank" href="http://www.itl.nist.gov/iad/mig/publications/proceedings/darpa98/html/tdt10/tdt10.htm">http://www.itl.nist.gov/iad/mig/publications/proceedings/darpa98/html/tdt10/tdt10.htm</a> </li>
+        </ul>
+        
+        <h2>Running Example</h2>
+        <p> Running this Matlab program is very easy. Using the program and data provied above, a running example is as follows (<a href="ECML_13_experiments/CASO_MVMT.m"><font color=blue>CASO_MVMT.m</font></a>, <a href="ECML_13_experiments/20news.mat"><font color=blue>20news.mat </font></a>):
+        	 
+        	</p>
+        	<table style="width:100%; border-spacing:0;">
+          <tr><td>load  20news.mat <br> [result,F1,meanF1,U,Z,Theta]=CASO_MVMT(fea,label,trainFea,trainLabel,unlabelFea,unlabelLabel,20,15,0.0039,0.0078,0.0039);
+        	</td></tr>       
+        </table> 
+        	
+        	<p></p>
+        	<p></p>
+        	<p></p>
+        	<p></p>
+        
+        	
+      </div>
+      <!-- end of main content, except footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+      
+    </div>
+    <footer>
+      <p><a href="index.html">Home</a> | <a href="index.html">Publications</a> </p>
+      <p>&copy; 2013 Xin Jin. All Rights Reserved. 
+    </footer>
+  </div>
+  <!-- javascript at the bottom for fast page loading -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+  <script type="text/javascript" src="js/jquery.lavalamp.min.js"></script>
+  <script type="text/javascript" src="js/image_fade.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("#lava_menu").lavaLamp({
+        fx: "backout",
+        speed: 700
+      });
+    });
+  </script>
+<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>
